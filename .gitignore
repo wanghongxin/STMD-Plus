@@ -1,0 +1,53 @@
+# Image files
+# images
+*.png
+*.eps
+*.jpg
+*.tif
+*.fig
+
+
+# Videos
+*.avi
+*.mp4
+
+
+# Data Set
+
+*.mat
+*.asv
+
+\#
+
+
+# Mex File
+*.mexw64
+
+
+# Data Folder
+/codegen/*
+/Data/*
+/Figures/*
+/figures/*
+/Results/*
+/Videos/*
+
+
+# Tex Document
+*.pdf
+*.aux
+*.bbl
+*.zip
+*.bak
+*.blg
+*.txt
+*.log
+*.gz
+*.toc
+*.snm
+*.out
+*.nav
+
+
+
+
