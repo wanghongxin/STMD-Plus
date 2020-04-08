@@ -1,7 +1,7 @@
 % 2016-11-05
 
 % 函数说明
-% 该函数用于记录 DS-STMD 模型检测物体的轨迹
+% 该函数用于记录 DSTMD 模型检测物体的轨迹
 
 
 %% Main Function
@@ -11,8 +11,8 @@
 % if ~exist('Clustering_Results','var')
 %     
 %     %clear all; close all; clc;  
-%     DS_STMD_Detection_Threshold = 200;
-%     File_Max = strcat('D:\Matlab\2016-10-01-Small-Field-System\Data\Clustering_Results-Detection-Threshold-',num2str(DS_STMD_Detection_Threshold),'.mat');
+%     DSTMD_Detection_Threshold = 200;
+%     File_Max = strcat('D:\Matlab\2016-10-01-Small-Field-System\Data\Clustering_Results-Detection-Threshold-',num2str(DSTMD_Detection_Threshold),'.mat');
 %     load(File_Max)  
 % end
 
@@ -60,8 +60,8 @@ for j_R = 1:NumFrame_Clustering
 end
 
 
-file = [Parameter_File.folder_Global,'/',strcat('Target-Trace-Threshold-',num2str(DS_STMD_Detection_Threshold),'.mat')];
-save(file,'Target_Trace','DS_STMD_Detection_Threshold','Target_Trace_Num','Possible_Target_Num','-v7.3')
+file = [Parameter_File.folder_Global,'/',strcat('Target-Trace-Threshold-',num2str(DSTMD_Detection_Threshold),'.mat')];
+save(file,'StartFrame','EndFrame','StartRecordFrame','Target_Trace','DSTMD_Detection_Threshold','Target_Trace_Num','Possible_Target_Num','-v7.3')
 
 
 timeTrain = toc/60; % min

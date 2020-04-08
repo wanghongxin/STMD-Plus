@@ -1,21 +1,21 @@
 % 2016-11-05
 
 % 函数说明
-% 该函数用于实现对于 DS-STMD 输出结果的聚类
-% 对于 DS-STMD 模型经过方向抑制后的结果 Outputs_After_Inhibition_Along_Theta_Axis，
+% 该函数用于实现对于 DSTMD 输出结果的聚类
+% 对于 DSTMD 模型经过方向抑制后的结果 Outputs_After_Inhibition_Along_Theta_Axis，
 % 首先沿 Z 轴进行 Max 操作，寻求运动方向
 % 然后对 Max 操作后的结果进行聚类
 
 
 % 导入变量 Max_Operation_DS_STMD_Outputs
-if ~exist('Max_Operation_DS_STMD_Outputs','var')
-    file = [Parameter_File.folder_Global,'/','Max_Operation_DS_STMD_Outputs.mat'];
+if ~exist('Max_Operation_DSTMD_Outputs','var')
+    file = [Parameter_File.folder_Global,'/','Max_Operation_DSTMD_Outputs.mat'];
     load(file)
 end
 
 
 % 生成存储聚类结果的 cell
-NumFrame_Clustering = length(Max_Operation_DS_STMD_Outputs);
+NumFrame_Clustering = length(Max_Operation_DSTMD_Outputs);
 Clustering_Results = cell(1,NumFrame_Clustering);
 
 tic;
@@ -23,12 +23,12 @@ timedLog('Start Clustering...')
 for j = 1:NumFrame_Clustering
     
     
-    ModelOutputs = Max_Operation_DS_STMD_Outputs{j};
+    ModelOutputs = Max_Operation_DSTMD_Outputs{j};
     
     for k = 1:H_Clustering
         
         % 寻找大于阈值的点
-        [IndX,IndY] = find(ModelOutputs(:,:,k)>DS_STMD_Detection_Threshold);
+        [IndX,IndY] = find(ModelOutputs(:,:,k)>DSTMD_Detection_Threshold);
         % 去掉一些边界点
         NIndY = IndY(IndY>5&IndY<(N_Clustering-5)&IndX>5&IndX<(M_Clustering-5));
         NIndX = IndX(IndY>5&IndY<(N_Clustering-5)&IndX>5&IndX<(M_Clustering-5));
@@ -231,11 +231,9 @@ for j = 1:NumFrame_Clustering
 end
 
 
-file = [Parameter_File.folder_Global,'/',strcat('Clustering_Results-Detection-Threshold-',num2str(DS_STMD_Detection_Threshold),'.mat')];
-save(file,'Clustering_Results','DS_STMD_Detection_Threshold','-v7.3')
+file = [Parameter_File.folder_Global,'/',strcat('Clustering_Results-Detection-Threshold-',num2str(DSTMD_Detection_Threshold),'.mat')];
+save(file,'StartFrame','EndFrame','StartRecordFrame','Clustering_Results','DSTMD_Detection_Threshold','-v7.3')
 
-
-% clearvars Max_Operation_DS_STMD_Outputs
 
 
 

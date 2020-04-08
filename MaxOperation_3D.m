@@ -1,4 +1,4 @@
-function [OutputMatrix] = MaxOperation_3D(Input,MaxRegionSize,Thres,M,N,H)
+function [OutputMatrix] = MaxOperation_3D(Input,MaxRegionSize,M,N,H)
 
 
 % 该函数用于对三维矩阵做三维的 Max Operation
@@ -22,7 +22,7 @@ for rr = 1:M
         
         for hh = 1:H
             
-            if Input(rr,cc,hh) < Thres  % 去掉一些较小的值
+            if Input(rr,cc,hh) == 0  % 去掉一些较小的值
                 OutputMatrix(rr,cc,hh) = 0;
             elseif Input(rr,cc,hh)~=max(max(max(Input(r1:r2,c1:c2,:))))
                 OutputMatrix(rr,cc,hh) = 0;

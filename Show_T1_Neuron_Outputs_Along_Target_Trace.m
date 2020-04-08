@@ -7,18 +7,18 @@ timedLog('Start Recording T1 Neuron Outputs for Each Target Trace...')
 %% Main Function
 
 if ~exist('Target_Trace','var')
-    File_Trace = [Parameter_File.folder_Global,'/',strcat('Target-Trace-Threshold-',num2str(DS_STMD_Detection_Threshold),'.mat')];
+    File_Trace = [Parameter_File.folder_Global,'/',strcat('Target-Trace-Threshold-',num2str(DSTMD_Detection_Threshold),'.mat')];
     load(File_Trace)
 end
 
-% 如果没有变量 All_MonophasicNeuron_Output，则导入数据
+% 如果没有变量 All_T1_Output，则导入数据
 if ~exist('All_T1_Neuron_Outputs','var')
     if ~exist(strcat(Parameter_File.folder_Global,'\','All_T1_Neuron_Outputs.mat'),'file')
         
         % clear all; close all; clc;
         File_T1 = strcat(Parameter_File.folder_Global,'\','Recorded-Data.mat');
         load(File_T1)
-        % 重新提取 T1_Neuron_Output，并将其保存在 All_MonophasicNeuron_Output 中
+        % 重新提取 T1_Neuron_Output，并将其保存在 All_T1_Output 中
         NumFrame_Clustering = length(RecordedData);
         All_T1_Neuron_Outputs = cell(1,NumFrame_Clustering);
         
@@ -28,7 +28,6 @@ if ~exist('All_T1_Neuron_Outputs','var')
             
         end
         % 清除多余的变量
-        %clearvars -except All_MonophasicNeuron_Output NumFrame_Clustering DS_STMD_Detection_Threshold Target_Trace Target_Trace_Num Possible_Target_Num Max_Operation_DS_STMD_Outputs
         clearvars RecordedData
         
         File = strcat(Parameter_File.folder_Global,'\','All_T1_Neuron_Outputs.mat');
@@ -40,7 +39,6 @@ end
 
 
 % 对每条运动轨迹，提取响应的 T1 Neuron Outputs
-
 % T1 Neuron Kernel 的个数，默认为 4
 T1_Neuron_Kernel_Num = 4;
 % 生成存储 T1 Neural Outputs 的矩阵
@@ -78,8 +76,8 @@ for ii = 1:NumFrame_Clustering
 end
 
 % 存储数据
-file = [Parameter_File.folder_Global,'/',strcat('T1-Neuron-Outputs-Target-Trace-Threshold-',num2str(DS_STMD_Detection_Threshold),'.mat')];
-save(file,'All_Target_Trace_T1_Neuron_Outputs','DS_STMD_Detection_Threshold','-v7.3')
+file = [Parameter_File.folder_Global,'/',strcat('T1-Neuron-Outputs-Target-Trace-Threshold-',num2str(DSTMD_Detection_Threshold),'.mat')];
+save(file,'All_Target_Trace_T1_Neuron_Outputs','DSTMD_Detection_Threshold','-v7.3')
 
 % 下面代码用于计算一条轨迹的相关统计量
 Statics_Num = 3;
@@ -131,7 +129,7 @@ for kk = 1:max(Target_Trace_Num)
 end
 
 % 存储数据
-file = [Parameter_File.folder_Global,'/',strcat('Target_Trace_Statistics-',num2str(DS_STMD_Detection_Threshold),'.mat')];
+file = [Parameter_File.folder_Global,'/',strcat('Target_Trace_Statistics-',num2str(DSTMD_Detection_Threshold),'.mat')];
 save(file,'All_Target_Trace_Statistics','All_Target_Trace_Statistics_After_Conv','-v7.3')
 
 
@@ -143,13 +141,6 @@ if timeTrain<60
 else
    timedLog(['Recording T1 Neuron Outputs for Each Target Trace finished, time taken: ',num2str(timeTrain/60), ' hrs'])
 end 
-
-
-
-
-
-
-
 
 
 
