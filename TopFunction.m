@@ -6,7 +6,7 @@ clear all; close all; clc;
 
 %% Main
 % 给定 DSTMD 的检测阈值
-DSTMD_Detection_Threshold_Range = [1000:-50:50,45:-5:10];
+DSTMD_Detection_Threshold_Range = [1e5:-1e4:2e4,1e4:-1e3:2e3,1e3:-1e2:1e2];
 Num_Detection_Threshold = length(DSTMD_Detection_Threshold_Range);
 
 % 用于存储 Detection Rate 及 False Alarm Rate

@@ -60,7 +60,8 @@ if ~exist(file,'file')
         
         % Max Operation (Along Theta Axis)
         MaxOperation_Input = DSTMD_Outputs_After_Inhibition_Along_Theta_Axis_All{j};
-        Is_Mex_Max = 0;
+        Is_Mex_Max = 1;
+        
         if Is_Mex_Max ==1
             if MexOperation == 1
                 timedLog('Building mex function: MaxOperation_3D_mex ...');

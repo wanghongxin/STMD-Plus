@@ -4,27 +4,6 @@
 *.mp4
 
 
-# Data Set
-
-*.mat
-*.asv
-
-\#
-
-
-# Mex File
-*.mexw64
-
-
-# Data Folder
-/codegen/*
-/Data/*
-/Figures/*
-/figures/*
-/Results/*
-/Videos/*
-
-
 # Tex Document
 *.pdf
 *.aux
@@ -39,6 +18,8 @@
 *.snm
 *.out
 *.nav
+*.asv
+
 
 
 

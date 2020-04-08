@@ -21,7 +21,7 @@ Parameter_File.Imagetitle = 'Synthetic-Stimuli';
 % Start and end frame of input image sequence
 Parameter_File.StartRecordFrame = 300;         % 开始记录数据的帧
 Parameter_File.StartFrame = 1;
-Parameter_File.EndFrame = 1300;
+Parameter_File.EndFrame = 900;
 
 % Cluttered Background   50 - 550  (更新300帧 即可)
 % White Background 500-1000        (更新300帧 即可)

@@ -1,19 +1,9 @@
 function [ Filters ] = Generalize_T1_Neuron_Kernels(Sigma,Alpha,Theta,FilterSize)
 
 
-
-% Ref: Construction and Evaluation of an Integrated Dynamical Model of
-% Visual Motion Perception
-
-% 函数说明
-% 该函数用于生成 Ref 中 Eq.(2) 的空间滤波器
-% 即：
-% Filter  = G(x-a*cos,y-a*sin)-G(x+a*cos,y+a*sin)
-% 也即本文所提及的 T1 神经元的卷积核
-
 % 参数说明
 % FilterSize        滤波器大小
-% Alpha             Eq.2 中高斯函数中心与滤波器中心的距离
+% Alpha             Eq 中高斯函数中心与滤波器中心的距离
 % Theta             滤波器的偏转角度，默认为角度， 如 0,45,90,135,180...
 % Sigma             高斯函数的 Sigma 
 
